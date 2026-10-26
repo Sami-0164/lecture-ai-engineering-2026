@@ -87,4 +87,11 @@ pyproject.toml / uv.lock  依存パッケージとその固定版
 AIE_MODEL=gemini-3.5-flash uv run python -m app.ask "LoRAとは何ですか？"
 ```
 
+複数モデルと同じ会話を続けるには `--interactive` と `--models` を指定します。
+各モデルは独立した会話履歴を持ち、入力した質問が各モデルに送られます。`/exit` または `/quit` で終了します。
+
+```bash
+uv run python -m app.ask --interactive --models gemini-3.5-flash-lite,gemini-3.1-flash
+```
+
 無料枠には1分あたり・1日あたりのリクエスト上限があります。上限は [Gemini API のレート制限のページ](https://ai.google.dev/gemini-api/docs/rate-limits) で確認してください。
